@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="utf-8">
   <title>Agendamentos | Pedra do Baú</title>
   <link rel="stylesheet" href="assets/css/main.css">
@@ -9,34 +9,74 @@
 </head>
 <body>
   <header>
-  <nav>
-  <img src="img/logotipo-prefeitura-sbs.png" alt="Logo" class="logo">
-  <div class="menu-icon" onclick="toggleMenu()">☰</div>
-  <ul class="menu" id="menu"> <!-- Classe importante: 'menu' -->
+    <nav>
+      <img src="img/logotipo-prefeitura-sbs.png" alt="Logo" class="logo">
+
+      <!-- Ícone hamburguer -->
+      <div class="menu-icon" onclick="toggleMenu()">☰</div>
+
+      <!-- Menu desktop -->
+      <ul class="menu" id="menu">
+        <li><a href="#">INÍCIO</a></li>
+        <li><a href="#">INFORMAÇÕES</a></li>
+        <li><a href="#">AGENDAMENTOS</a></li>
+        <li><a href="#">BAUZINHO</a></li>
+        <li><a href="#">CONTATOS</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ===== MENU MOBILE LATERAL ===== -->
+<nav class="mobile">
+  <div class="logo-menu">
+    <img src="img/logotipo-prefeitura-sbs.png" alt="Prefeitura São Bento">
+    <button class="fechar-menu" aria-label="Fechar menu">&times;</button>
+  </div>
+  <ul class="menu-mob" id="menu-mob">
     <li><a href="#">INÍCIO</a></li>
     <li><a href="#">INFORMAÇÕES</a></li>
     <li><a href="#">AGENDAMENTOS</a></li>
     <li><a href="#">BAUZINHO</a></li>
     <li><a href="#">CONTATOS</a></li>
   </ul>
-</nav>
-  </header>
-<!-- Fundo verde entre header e bem-vindo -->
-<div class="section-banner">
-  <div class="apresent">
-    <h1><a href="#">Momento Natural <br>da Pedra do Baú</a></h1>
-  </div>
+  <div class="social-mobile">
+  <a href="https://www.instagram.com/meioambientesbs" target="_blank" aria-label="Instagram">
+    <img src="ico/instagram(2).png" alt="Instagram">
+  </a>
+  <a href="https://www.facebook.com/meioambientesbs" target="_blank" aria-label="Facebook">
+    <img src="ico/facebook(2).png" alt="Facebook">
+  </a>
 </div>
+</nav>
 
-<section class="foto-sapucai">
-  <img src="img/Design_sem_nome_1_-removebg-preview(1).png" alt="Símbolo Pedra do Baú" class="logo-simbolo">
-</section>
-<h2 class="titulo">
-  <img src="img/social.png" alt="Ícone Montanha" class="icone">
-  Comunicado
+<!-- Fundo escuro -->
+<div id="mobile-overlay"></div>
+
+
+  <!-- Fundo verde entre header e bem-vindo -->
+  <div class="section-banner">
+    <div class="apresent">
+      <h1>
+        <a href="#">
+          Momento Natural  <span class="quebra"></span>da Pedra do Baú
+        </a>
+      </h1>
+    </div>
+  </div>
+
+
+  <div class="logo-section">
+    <h2 class="logo-section-title">
+  <span class="icon"></span>
+  Bem-vindo a São Bento do Sapucaí
+  
 </h2>
+  </div>
+ 
 
-
+  <h2 class="titulo">
+    Comunicado
+  </h2>
 
   <div class="layout">
   <div class="container">
@@ -54,14 +94,81 @@
   </div>
 </div>
 
+  <div class="btn-agendamento-wrapper">
+  <a href="#" class="btn-agendamento"><span class="agenda"></span>REALIZAR  AGENDAMENTO 
+  </a>
+</div>
 
-<script>
- function toggleMenu() {
-  document.getElementById("menu").classList.toggle("active");
+
+  <script>
+    
+
+  function toggleMenu() {
+  const menu = document.querySelector("nav.mobile");
+  const overlay = document.getElementById("mobile-overlay");
+
+  menu.classList.toggle("open");
+  document.body.classList.toggle("menu-open");
 }
 
-</script>
 
+  document.addEventListener("DOMContentLoaded", () => {
+  const btnFechar = document.querySelector(".fechar-menu");
+  const menu = document.querySelector("nav.mobile");
+
+  btnFechar.addEventListener("click", () => {
+    menu.classList.remove("open");
+    document.body.classList.remove("menu-open");
+  });
+
+  // Também pode fechar clicando no overlay:
+  const overlay = document.getElementById("mobile-overlay");
+  overlay.addEventListener("click", () => {
+    menu.classList.remove("open");
+    document.body.classList.remove("menu-open");
+  });
+});
+
+
+  </script>
+
+  <footer class="footer">
+  <div class="footer-top"></div>
+
+  <div class="footer-content">
+    <div class="footer-left">
+      <img src="ico/brasao-pref-sbs-white.png" alt="Brasão São Bento do Sapucaí">
+    </div>
+
+    <div class="footer-right">
+        <div class="footer-social">
+        <a href="https://www.facebook.com/meioambientesbs" class="social-icon facebook" aria-label="Facebook"></a>
+        <a href="https://www.instagram.com/meioambientesbs" class="social-icon instagram" aria-label="Instagram"></a>
+      </div>
+      <ul class="footer-info">
+        <li>
+        <img src="ico/black-placeholder-variant(1).png" alt="Local" class="icone-footer">
+        <span>Av. Sebastião de Mello Mendes, 511 | Jd. Santa Terezinha</span>
+        </li>
+
+
+        <li>
+          <img src="ico/telephone-symbol-button.png" alt="Telefone" class="icone-footer">
+          (12) 3971-6110
+        </li>
+       
+      </ul>
+
+      <div class="footer-links">
+        • <a href="https://saobentodosapucai.sp.gov.br/wp-content/uploads/2025/08/Aviso-de-Privacidade-Prefeitura-SBS.pdf">Política de Privacidade</a> • 
+        <a href="https://saobentodosapucai.sp.gov.br/wp-content/uploads/2025/08/Politica-de-Cookies-Prefeitura-SBS.pdf">Política de Cookies</a> 
+        •<a href="https://saobentotur.com.br">Portal do Turismo</a> 
+        
+      </div>
+    </div>
+  </div>
+</footer>
 
 </body>
 </html>
+
