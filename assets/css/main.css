@@ -1,0 +1,1328 @@
+/* ======= BASE ======= */
+body {
+  font-size: 30px;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ======= FONTES PERSONALIZADAS ======= */
+@font-face {
+  font-family: Zalando;
+  src: local(ZalandoSansExpanded-VariableFont_wght),
+       url(../../fonts/ZalandoSansExpanded-VariableFont_wght.ttf);
+}
+
+@font-face {
+  font-family: DancingScript;
+  src: local(DancingScript-VariableFont_wght),
+       url(../../fonts/DancingScript-VariableFont_wght.ttf);
+}
+
+
+@font-face {
+  font-family: DMSans;
+  src: local(DMSans_36pt-Regular),
+       url(../../fonts/spacemono/spacemono/SpaceMono-Bold.ttf);
+}
+
+/* ======= HEADER E NAV (DESKTOP) ======= */
+header {
+  position: relative;
+  font-family: Zalando;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 10px;
+  background-color: #fff;
+  z-index: 10;
+}
+
+/* Bordas coloridas abaixo do header */
+header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(to bottom, #0f6607 0 3px, #d40606 2px 6px);
+  z-index: -1;
+}
+
+nav{
+  display: flex;
+  justify-content:space-between;
+  align-items:center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ======= LOGO ======= */
+.logo {
+  width: 220px;
+  height: auto;
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+}
+
+/* ======= MENU DESKTOP ======= */
+.menu {
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li {
+  padding: 0 20px;
+  position: relative;
+}
+
+.menu li a {
+  color: #01310c;
+  text-decoration: none;
+  font-size: 14px;
+  position: relative;
+}
+
+.menu li a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background-color: #024d128f;
+  bottom: -4px;
+  left: 0;
+  transition: width 0.3s ease;
+}
+
+.menu li a:hover::after {
+  width: 100%;
+}
+
+.menu li a:hover {
+  color: #024d128f;
+}
+
+/* ======= ÍCONE HAMBÚRGUER ======= */
+.menu-icon {
+  width: 45px;
+  height: 45px;
+  background: #fff;
+  border: 2px solid #164220;
+  color: #164220;
+  font-size: 26px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 6px;
+  z-index: 1003;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+/* ======= MENU MOBILE ======= */
+nav.mobile {
+  display: none;
+  flex-direction: column;
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: transform 0.8s ease, opacity 0.8s ease 0.3s;
+}
+
+nav.mobile.open {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;   /* espaço entre topo e base */
+  align-items: center;              /* centraliza tudo horizontalmente */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 70%;
+  height: 100%;
+  background: #fff;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.25);
+  padding: 20px;
+  z-index: 1002;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* Logo e botão fechar */
+nav.mobile .logo-menu {
+  width: 100%;
+  text-align: center;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+nav.mobile .logo-menu img {
+  max-width: 180px;
+  height: auto;
+}
+
+nav.mobile .fechar-menu {
+  position: absolute;
+  top: -15px;
+  right: -5px;
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  color: #164220;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+nav.mobile .fechar-menu:hover {
+  transform: scale(1.1);
+}
+
+/* Menu de navegação */
+nav.mobile .menu-mob {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+nav.mobile .menu-mob li {
+  margin: 0;
+  padding: 0;
+}
+
+nav.mobile .menu-mob li a {
+  display: block;
+  width: 100%;
+  font-family: "Zalando", "bold";
+  font-size: 0.75rem;
+  color: #0a491b;
+  text-decoration: none;
+  padding: 12px 0;
+  padding-left: 14px;
+  line-height: 1.2;
+  border-bottom: 1px solid #e0e0e0;
+  transition: background 0.3s;
+}
+
+nav.mobile .menu-mob li a:hover {
+  background: #f6f6f6;
+}
+
+/* Redes sociais centralizadas verticalmente */
+nav.mobile .social-mobile {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  width: 100%;
+  margin-top: 40px;
+  margin-bottom: auto; /* Centraliza verticalmente entre topo/base */
+}
+
+nav.mobile .social-mobile a img {
+  width: 40px;
+  height: 40px;
+  transition: transform 0.3s ease;
+}
+
+nav.mobile .social-mobile a:hover img {
+  transform: scale(1.1);
+}
+
+/* Mobile only */
+@media (max-width: 900px) {
+  nav.desktop,
+  .menu {
+    display: none !important;
+  }
+
+  .menu-icon {
+    display: flex;
+  }
+}
+
+/* Overlay escuro */
+#mobile-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 1001;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+body.menu-open #mobile-overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+body.menu-open {
+  overflow: hidden;
+}
+
+
+/* ======= RESPONSIVIDADE ======= */
+@media (max-width: 900px) {
+  nav.desktop, .menu {
+    display: none !important;
+  }
+  .menu-icon {
+    display: flex;
+  }
+}
+
+/* ======= CONTEÚDO PRINCIPAL ======= */
+main {
+  margin-top: 90px;
+  padding: 20px;
+}
+
+/* ======= SEÇÃO APRESENTAÇÃO ======= */
+.apresent {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  aspect-ratio: 16 / 9;
+  margin: 20px auto;
+  border-radius: 20px;
+  background-image:
+    linear-gradient(to bottom, #024d12d3, rgba(0, 0, 0, 0.651)),
+    url('../../img/pedra-do-bau.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Centraliza o H1 */  
+.apresent h1 { 
+  position: absolute; 
+  top: 50%; /* centralização precisa */
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  margin: 0; 
+  text-align: center; 
+  font-size: clamp(1.5rem, 4vw, 3rem); 
+  line-height: 1.3; 
+  color: white; 
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6); 
+  z-index: 3; 
+  white-space: nowrap; /* permite quebras naturais */
+}
+
+/* Estilo do link dentro do H1 */
+.apresent h1 a { 
+  letter-spacing: 0.05em; 
+  font-size: clamp(2rem, 6vw, 4rem); 
+  text-decoration: none; 
+  color: inherit; 
+  font-family: "DancingScript", cursive; 
+  display: inline-block; /* importante para centralizar e aplicar quebra */
+}
+
+/* Força a quebra de linha apenas em telas grandes */
+.quebra::after {
+  content: "\A";  /* quebra de linha */
+  white-space: pre;
+  display: inline; /* garante que o \A funcione */
+}
+
+/* Em telas pequenas, remove a quebra e junta tudo */
+@media (max-width: 780px) {
+  .quebra::after {
+    content: " "; /* substitui o \A por um espaço normal */
+    white-space: normal;
+  }
+}
+
+
+
+.apresent h1 a:hover { 
+  color: #f2fa83; 
+}
+
+/* Barra amarela abaixo do H1 */ 
+.apresent h1::before { 
+  content: ''; 
+  position: absolute; 
+  width: 80%; 
+  height: 4px;
+  border-radius: 50px; 
+  background-color: #f2fa83; 
+  top: calc(100% + 6px); 
+  left: 50%; 
+  transform: translateX(-50%); 
+  z-index: 2; 
+}
+
+/* ======= SEÇÃO DO BANNER ======= */
+.section-banner {
+  background-image: linear-gradient(to top, #cecdcd 0%, #ffffff00 100%);
+  padding: 40px 0;
+  margin-bottom: 0;
+}
+
+/* ======= RESPONSIVO ======= */
+
+/* === Laptops e telas médias === */
+@media (max-width: 1020px) {
+  .apresent {
+    width: 70%;
+    height: 40vh;
+  }
+  .apresent h1 a {
+    font-size: 2.8rem;
+  }
+}
+
+/* === Tablets horizontais e notebooks pequenos === */
+@media (max-width: 900px) {
+  .apresent {
+    width: 80%;
+    height: 40vh;
+  }
+  .apresent h1 a {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 840px) {
+  .apresent {
+    width: 80%;
+    height: 40vh;
+  }
+  .apresent h1 a {
+    font-size: 2.5rem;
+  }
+}
+
+/* === Tablets verticais (como 720px) === */
+@media (max-width: 780px) {
+  .apresent {
+    width: 80%;
+    height: 38vh; /* altura visível e proporcional */
+  }
+  .apresent h1 a {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .apresent {
+    width: 80%;
+    height: 40vh;
+  }
+  .apresent h1 a {
+    font-size: 2.2rem;
+  }
+}
+
+/* === Smartphones grandes === */
+@media (max-width: 650px) {
+  .apresent {
+    width: 80%;
+    height: 40vh;
+  }
+  .apresent h1 a {
+    font-size: 2rem;
+  }
+}
+
+/* === Smartphones pequenos === */
+@media (max-width: 480px) {
+  .apresent {
+    width: 80%;
+    height: 25vh;
+  }
+  .apresent h1 a {
+    font-size: 1.6rem;
+  }
+  .section-banner {
+    background-image: linear-gradient(to top, #b4b4b4cb 0%, #ffffff 100%);
+  }
+}
+
+/* ======= TÍTULO ENTRE BARRAS ======= */
+
+
+/* ======= SEÇÃO DO BANNER ======= */
+.section-banner {
+   background-image: linear-gradient(to top, #b4b4b4ad  0%, #ffffff00 100%);
+  padding: 50px 0;
+  margin-bottom: -50px;
+}
+
+@media (max-width: 1020px){
+.section-banner {
+   background-image: linear-gradient(to top, #b4b4b4ad 0%, #ffffff00 100%);
+   padding: 50px 0;
+ 
+
+ }
+}
+
+@media (max-width: 920px){
+.section-banner {
+   background-image: linear-gradient(to top, #b4b4b4b7 0%, #ffffff00 100%);
+   padding: 50px 0;
+ 
+
+ }
+}
+
+
+
+@media (max-width: 880px){
+.section-banner {
+   background-image: linear-gradient(to top, #b4b4b4a9 0%, #ffffff00 100%);
+   padding: 50px 0;
+ 
+
+ }
+}
+
+
+@media (max-width: 879px){
+.section-banner {
+   background-image: linear-gradient(to top, #b4b4b4b9 0%, #ffffff00 100%);
+   padding: 50px 0;
+ 
+
+ }
+}
+
+@media (max-width: 840px){
+.section-banner {
+   background-image: linear-gradient(to top, #b4b4b4b9 0%, #ffffff00 100%);
+   padding: 50px 0;
+ 
+
+ }
+}
+
+@media (max-width: 780px){
+.section-banner {
+  background-image: linear-gradient(to top, #b4b4b4bb 0%, #ffffff00 100%);
+  padding: 50px 0;
+
+ }
+}
+
+@media (max-width: 720px){
+.section-banner {
+  
+  padding: 50px 0;
+  
+ }
+}
+
+@media (max-width: 600px){
+.section-banner {
+ 
+  padding: 50px 0;
+  
+ }
+}
+
+@media (max-width: 480px){
+.section-banner {
+   background-image: linear-gradient(to top, #b4b4b4bb 0%, #ffffff00 100%);
+  padding: 50px 0;
+ 
+ }
+}
+
+/* ======= LAYOUT (CAIXA DE TEXTO + IMAGEM) ======= */
+.titulo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  color: #216631;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 50px 0;
+  gap: 10px;
+  font-family: 'Zalando';
+  flex-wrap: wrap;
+  text-align: center;
+  position: relative;
+}
+
+.titulo::before,
+.titulo::after {
+  content: "";
+  display: block; /* <--- garante que apareçam corretamente */
+  width: 20%;
+  min-width: 100px;
+  height: 10px;
+  background: linear-gradient(to bottom, #0b4d06 50%, #d40606 50%);
+  border-radius: 10px;
+  opacity: 0.9;
+  transition: all 0.3s ease;
+}
+
+.titulo::before { margin-right: 30px; }
+.titulo::after { margin-left: 30px; }
+
+/* ===== Quando a tela for pequena ===== */
+@media (max-width: 1020px) {
+  .titulo {
+  font-size: 1.5rem;      /* reduz fonte */
+  margin: 45px 0px;         /* reduz espaçamento */
+  border-radius: 10px;    /* borda menor */
+  padding: 0 8px;
+  margin-bottom: 50px;    
+  }
+
+  .titulo::before {
+    width: 60%;
+    height: 6px;
+    margin: 0 auto;
+    background: linear-gradient(to bottom, #0b4d06 50%, #d40606 50%);
+    display: block;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -10px; /* ajusta a distância abaixo do texto */
+    margin-bottom: 0;
+    width: 50%;
+    height: 5px;
+    border-radius: 5px;
+  }
+
+  .titulo::after {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .titulo {
+  font-size: 1.4rem;      /* reduz fonte */
+  margin: 40px 0px;         /* reduz espaçamento */
+  border-radius: 10px;    /* borda menor */
+  padding: 0 8px;
+  margin-bottom: 50px;    
+  }
+
+  .titulo::before {
+    width: 60%;
+    height: 6px;
+    margin: 0 auto;
+    background: linear-gradient(to bottom, #0b4d06 50%, #d40606 50%);
+    display: block;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -10px; /* ajusta a distância abaixo do texto */
+    margin-bottom: 0;
+    width: 50%;
+    height: 5px;
+    border-radius: 5px;
+  }
+
+  .titulo::after {
+    display: none;
+  }
+}
+
+@media (max-width: 720px) {
+  .titulo {
+  font-size: 1.2rem;      /* reduz fonte */
+  margin: 40px 0px;         /* reduz espaçamento */
+  border-radius: 10px;    /* borda menor */
+  padding: 0 8px;
+  margin-bottom: 50px;    
+  }
+
+  .titulo::before {
+    width: 60%;
+    height: 6px;
+    margin: 0 auto;
+    background: linear-gradient(to bottom, #0b4d06 50%, #d40606 50%);
+    display: block;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -10px; /* ajusta a distância abaixo do texto */
+    margin-bottom: 0;
+    width: 60%;
+    height: 5px;
+    border-radius: 5px;
+  }
+
+  .titulo::after {
+    display: none;
+  }
+}
+
+@media (max-width: 680px) {
+  .titulo {
+  font-size: 1.2rem;      /* reduz fonte */
+  margin: 30px 0px;         /* reduz espaçamento */
+  border-radius: 10px;    /* borda menor */
+  padding: 0 8px;
+  margin-bottom: 50px;    
+  }
+
+  .titulo::before {
+    width: 60%;
+    height: 6px;
+    margin: 0 auto;
+    background: linear-gradient(to bottom, #0b4d06 50%, #d40606 50%);
+    display: block;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -10px; /* ajusta a distância abaixo do texto */
+    margin-bottom: 0;
+    width: 60%;
+    height: 5px;
+    border-radius: 5px;
+  }
+
+  .titulo::after {
+    display: none;
+  }
+}
+
+
+@media (max-width: 600px) {
+  .titulo {
+  font-size: 1.2rem;      /* reduz fonte */
+  margin: 30px 0px;         /* reduz espaçamento */
+  border-radius: 10px;    /* borda menor */
+  padding: 0 8px;
+  margin-bottom: 50px;    
+  }
+
+  .titulo::before {
+    width: 60%;
+    height: 6px;
+    margin: 0 auto;
+    background: linear-gradient(to bottom, #0b4d06 50%, #d40606 50%);
+    display: block;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -10px; /* ajusta a distância abaixo do texto */
+    margin-bottom: 0;
+    width: 60%;
+    height: 5px;
+    border-radius: 5px;
+  }
+
+  .titulo::after {
+    display: none;
+  }
+}
+
+/* ======= LAYOUT (CAIXA DE TEXTO + IMAGEM) ======= */
+.layout {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  padding: 50px 5%;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 20px;
+  background-color: #fff;
+  box-shadow:
+    0 0 10px rgba(38, 119, 56, 0.1),
+    0 0 30px rgba(0, 0, 0, 0.15);
+  margin-top: 5px;
+}
+
+.container {
+  flex: 1 1 100px;
+  max-width: 1000px;
+  margin-bottom: 50px;
+  box-sizing: border-box;
+  text-align: justify;
+}
+
+.btn-agendamento-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: clamp(16px, 5vw, 48px) 0;
+}
+
+.btn-agendamento {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(4px, 2vw, 14px);
+
+  background: #124d1f;
+  color: #fff;
+  font-size: clamp(0.75rem, 1.8vw, 1.2rem);
+  font-family: Zalando;
+  padding: clamp(8px, 2.5vw, 18px) clamp(16px, 4vw, 32px);
+  border-radius: clamp(4px, 1vw, 10px);
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(25, 116, 44, 0.12);
+  transition: background 0.2s, transform 0.2s;
+  white-space: nowrap; /* evita quebra do texto em telas muito pequenas */
+}
+
+.btn-agendamento:hover {
+  background: #176327;
+  transform: translateY(-2px);
+}
+
+.btn-agendamento .agenda {
+  width: clamp(18px, 5vw, 34px);
+  height: clamp(18px, 5vw, 34px);
+  background: url('../../ico/procurar.png') no-repeat center center;
+  background-size: contain;
+}
+
+/* Opcional: microajustes apenas em telas muito estreitas */
+@media (max-width: 480px) {
+  .btn-agendamento {
+    flex-direction: row; /* mantém o ícone ao lado esquerdo */
+    gap: clamp(4px, 1.5vw, 8px); /* espaço reduzido entre ícone e texto */
+    padding: clamp(6px, 2vw, 10px) clamp(10px, 4vw, 18px);
+    font-size: clamp(0.7rem, 2vw, 0.9rem);
+    width: clamp(140px, 60vw, 220px);
+    border-radius: 6px;
+  }
+
+  .btn-agendamento .agenda {
+    width: clamp(16px, 5vw, 24px);
+    height: clamp(16px, 5vw, 24px);
+  }
+}
+
+
+
+
+
+.image-box {
+  max-width: 350px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-box img {
+  width: 100%;
+  height: auto;
+  max-width: 300px;
+  display: block;
+  border-radius: 15px;
+}
+
+/* ======= TÍTULO INTERNO ======= */
+.container h3 {
+  font-size: clamp(14px, 2vw, 15px);
+  font-family: 'Zalando', sans-serif;
+  color: #125e21;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+/* ======= TEXTO ======= */
+.container p {
+  font-size: clamp(12px, 1.5vw, 16px);
+  font-family: 'Zalando', sans-serif;
+  text-align: justify;
+  color: #19742c;
+  margin-bottom: 12px;
+  line-height: 1.8;
+}
+
+.container p.warning {
+  color: #125e21;
+  font-weight: bold;
+}
+
+/* ======= RESPONSIVIDADE ======= */
+@media (max-width: 1020px) {
+  .layout {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 40px;
+    max-width: 60%;
+  }
+
+  .container h3 {
+    font-size: 1.1rem;
+  }
+
+  .container p {
+    font-size: 0.95rem;
+  }
+
+  .image-box img {
+    width: 75%;
+    max-width: 200px;
+  }
+}
+
+
+@media (max-width: 880px) {
+  .layout {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 40px;
+    max-width: 70%;
+  }
+
+  .container h3 {
+    font-size: 1.1rem;
+  }
+
+  .container p {
+    font-size: 0.95rem;
+  }
+
+  .image-box img {
+    width: 75%;
+    max-width: 200px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .layout {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 40px;
+    max-width: 60%;
+  }
+
+  .container h3 {
+    font-size: 0.95rem;
+  }
+
+  .container p {
+    font-size: 0.95rem;
+  }
+
+  .image-box img {
+    width: 75%;
+    max-width: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .layout {
+    padding: 20px;
+    gap: 10px;
+    max-width: 75%;
+  }
+
+  .container h3 {
+    font-size: 0.80rem;
+  }
+
+  .container p {
+    font-size: 0.80rem;
+    line-height: 1.6;
+  }
+
+  .image-box img {
+    max-width: 160px;
+  }
+}
+    
+
+.logo-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-color: #fff;
+  background-image:
+    linear-gradient(#cecdcd, rgba(12, 49, 9, 0.425)),
+    url('../../img/1620px-Sao_Bento_do_Sapucai_-_SP_51348997441-1024x683.jpg');
+  min-height: 300px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-top: 40px;
+  box-sizing: border-box;
+}
+
+/* Responsividade extra para telas menores */
+@media (max-width: 1020px) {
+  .logo-section {
+    min-height: clamp(80px, 30vw, 200px);
+    
+    
+  }
+}
+
+@media (max-width: 920px) {
+  .logo-section {
+    min-height: clamp(80px, 30vw, 150px);
+    margin-top: 2px;
+    padding: 0 4px;
+    
+  }
+}
+
+@media (max-width: 880px) {
+  .logo-section {
+    min-height: clamp(80px, 30vw, 150px);
+    margin-top: 5px;
+    padding: 0 4px;
+    
+  }
+}
+@media (max-width: 840px) {
+  .logo-section {
+    min-height: clamp(80px, 30vw, 125px);
+    margin-top: 5px;
+    padding: 0 4px;
+    
+  }
+}
+
+
+
+@media (max-width: 780px) {
+  .logo-section {
+    min-height: clamp(80px, 35vw, 112px);
+   
+    margin-top: 10px;
+    padding: 0 4px;
+  }
+}
+
+
+@media (max-width: 600px) {
+  .logo-section {
+    min-height: clamp(80px, 35vw, 120px);
+   
+    margin-top: 10px;
+    padding: 0 4px;
+  }
+}
+
+@media (max-width: 580px) {
+  .logo-section {
+    min-height: clamp(80px, 35vw, 100px);
+   
+    margin-top: 10px;
+    padding: 0 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-section {
+    min-height: clamp(80px, 35vw, 50px);
+   
+    margin-top: 10px;
+    padding: 0 4px;
+  }
+}
+
+
+.logo-section-title {
+  color: #ebebeb;
+  font-family: Zalando;
+  font-size: clamp(1.0rem, 4vw, 2.95rem);
+  gap: clamp(0px, 1vw, 18px);
+  padding: 0 clamp(2px, 2vw, 10px);
+  white-space: nowrap;
+  text-shadow: 2px 2px 8px #1047222a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+@media (max-width: 1020px) {
+  .logo-section-title {
+    font-size: clamp(1.0rem, 5vw, 1.8rem);
+    gap: clamp(8px, 1vw, 15px);
+    padding: 0 clamp(2px, 2vw, 8px);
+  }
+}
+
+@media (max-width: 780px) {
+  .logo-section-title {
+    font-size: clamp(1.0rem, 5vw, 1.4rem);
+    gap: clamp(8px, 1vw, 15px);
+    padding: 0 clamp(4px, 3vw, 8px);
+  }
+}
+
+@media (max-width: 600px) {
+  .logo-section-title {
+    font-size: clamp(0.8rem, 5vw, 1.3rem);
+    gap: clamp(4px, 1vw, 10px);
+    padding: 0 clamp(2px, 2vw, 8px);
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-section-title {
+    font-size: clamp(0.8rem, 4vw, 0.9rem);
+    gap: clamp(6px, 1vw, 10px);
+    padding: 0 clamp(2px, 2vw, 6px);
+  }
+}
+
+.logo-section-title .icon {
+  width: clamp(40px, 8vw, 120px);
+  height: clamp(40px, 8vw, 120px);
+  display: inline-block;
+  background: url('../../ico/mona.ico') no-repeat center center;
+  background-size: contain;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  background: #124d1f;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  font-size: clamp(0.8rem, 1.5vw, 1rem);
+  margin-top: 60px;
+}
+
+.footer-top {
+  background: #c4171d;
+  height: 4px;
+  width: 100%;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px 40px;
+  gap: 40px;
+  max-width: 1200px; /* Constrain the container width */
+  margin: 0 auto; /* Center the container on the page */
+}
+
+.footer-left img {
+  width: clamp(100px, 18vw, 160px);
+  height: auto;
+}
+
+.footer-right {
+  display: flex;
+  flex-direction:column;
+  align-items: flex-start; /* Center children horizontally */
+  gap: 10px;
+  max-width: 500px; /* Limit width to keep content compact */
+ 
+}
+
+.footer-info {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.footer-info li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 15px;
+  color: #fff;
+  font-size: 1rem;
+  justify-content: flex-start;
+  flex-wrap: nowrap;     /* impede que ícone e texto se separem */
+  text-align: left;
+}
+
+.footer-info li span {
+  word-break: break-word; /* permite o texto quebrar dentro da linha */
+  white-space: normal;    /* evita forçar uma única linha */
+}
+
+.icone-footer {
+  flex-shrink: 0;   /* o ícone nunca encolhe */
+  width: 20px;
+  height: 20px;
+}
+
+
+.footer-social {
+  display: flex;
+  justify-content: center; /* centraliza os ícones horizontalmente */
+  align-items: center;     /* centraliza verticalmente, se necessário */
+  gap: 10px;               /* espaço entre os ícones */
+  margin-top: 0;
+  width: 100%;             /* garante que ocupe toda a largura do container */
+}
+
+
+.social-icon {
+  width: 34px;
+  height: 34px;
+  display: inline-block;
+  border-radius: 6px;
+  background-color: rgba(255,255,255,0.1);
+  background-size: 60%;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: background-color 0.2s;
+}
+
+.social-icon.facebook {
+  background-image: url('../../ico/facebook.png');
+}
+
+.social-icon.instagram {
+  background-image: url('../../ico/instagram.png');
+}
+
+.social-icon:hover {
+  background-color: rgba(255,255,255,0.25);
+}
+
+.footer-links {
+  margin-top: 0;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 6px;
+  font-size: 0.9rem;
+  justify-content:center; /* Center links */
+}
+
+.footer-links a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover {
+  color: #c6e3c8;
+}
+
+/* ===== Responsividade ===== */
+@media (max-width: 768px) {
+  .footer-info li {
+    gap: 10px; /* diminui o espaço entre ícone e texto */
+    justify-content: flex-start;
+    text-align: left; /* mais natural para endereço */
+  }
+
+
+  .footer-left img {
+    margin: 0 auto 5px;
+  }
+
+  .footer-right {
+    align-items:flex-start;
+   
+  }
+
+  .footer-info {
+    align-items:flex-start;
+  }
+
+  .footer-info li {
+  align-items: flex-start;
+}
+}
+
+@media (max-width: 600px) {
+  .footer-info li {
+    gap: 10px; /* diminui o espaço entre ícone e texto */
+    justify-content: flex-start;
+    text-align: left; /* mais natural para endereço */
+  }
+
+
+  .footer-left img {
+    margin: 0 auto 5px;
+  }
+
+  .footer-right {
+    align-items:flex-start;
+   
+  }
+
+  .footer-info {
+    align-items:flex-start;
+  }
+
+  .footer-info li {
+  align-items: flex-start;
+  font-size: 0.8rem;
+}
+
+  .social-icon {
+  width: 30px;
+  height: 30px;
+  }
+
+  .footer-links {
+    font-size: 0.8rem;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .footer-info li {
+    gap: 10px; /* diminui o espaço entre ícone e texto */
+    justify-content: flex-start;
+    text-align: left; /* mais natural para endereço */
+  }
+
+
+  .footer-left img {
+    margin: 0 auto 5px;
+  }
+
+  .footer-right {
+    align-items:flex-start;
+    
+  }
+
+  .footer-info {
+    align-items:flex-start;
+  }
+
+  .footer-info li {
+  align-items: flex-start;
+  font-size: 0.8rem;
+}
+
+  .social-icon {
+  width: 30px;
+  height: 30px;
+  }
+
+  .footer-links {
+    font-size: 0.8rem;
+  }
+}
+/*FIM DA PÁGINA INDEX.HTML==AGENDAMENTOS*/
+/*=======INÍCIO */
+
+
+
