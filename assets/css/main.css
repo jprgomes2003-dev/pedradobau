@@ -1352,79 +1352,65 @@ a.active-mobile {
 /*FIM DA PÁGINA INDEX.HTML==INÍCIO*/
 
 /*=======Página Informações=======*/
+/* ============================
+   FUNDO PRINCIPAL
+============================= */
 .fundo-principal {
   position: relative;
-  padding-top: 100px; 
+  padding-top: 100px;
   width: 100%;
-  height: 90vh;
+  height: clamp(400px, 90vh, 800px); /* aumentei o mínimo de 300px para 400px */
   aspect-ratio: 16 / 9;
+  min-height: 500px;
   background-image:
     linear-gradient(to bottom, #ffffff18, rgba(9, 83, 25, 0.178)),
-    url('../../img/Adobe\ Express\ -\ file\(1\).jpg');
+    url('../../img/Adobe Express - file(1).jpg');
   background-size: cover;
-  background-position: center;
+  background-position: center top; /* foca na parte superior da imagem */
   background-repeat: no-repeat;
+  background-attachment: fixed; /* imagem fixa na tela */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
+
+/* ============================
+   BLOCO .DUVIDA
+============================= */
 .duvida {
   position: relative;
-  width: 100%;
-  max-width: 800px;
-  aspect-ratio: 16 / 9;
+  width: min(90vw, 600px);
+  min-width: 300px; /* ajuste menor */
+  min-height: 300px;
+  height: clamp(250px, 60vh, 600px);
   margin: 0 auto;
   border-radius: 20px;
   background-color: rgba(6, 43, 9, 0.945);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   overflow: hidden;
 }
 
-
-.duvida h1 { 
-  position: relative; 
-  top: 64%; /* centralização precisa */
-  left: 50%; 
-  transform: translate(-50%, -50%); 
-  margin: 0; 
-  text-align: center; 
-  font-size: clamp(1.5rem, 4vw, 3rem); 
-  line-height: 1.2; 
-  color: #e7fdb4e5;  
-  z-index: 3; 
-  white-space: nowrap; /* permite quebras naturais */
+.duvida h1 {
+  position: absolute;
+  top: 65%; /* fixo verticalmente */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  text-align: center;
+  line-height: 1.2;
+  color: #e7fdb4e5;
+  z-index: 3;
+  white-space: nowrap; /* mantém o texto numa linha */
 }
-
-/* Estilo do link dentro do H1 */
-.duvida h1 a { 
-  letter-spacing: 0.08em; 
-  font-size: clamp(3rem, 8vw, 4.2rem); 
-  text-decoration: none; 
-  color: inherit; 
-  font-family: "PoiretOne"; 
-  display: inline-block; /* importante para centralizar e aplicar quebra */
-}
-
-/* Força a quebra de linha apenas em telas grandes */
-.quebra::after {
-  content: "\A";  /* quebra de linha */
-  white-space: pre;
-  display: inline; /* garante que o \A funcione */
-}
-
-/* Em telas pequenas, remove a quebra e junta tudo */
-
 
 .duvida h1::before {
   content: "";
   position: absolute;
-  bottom: calc(100% + 30px); /* ⬅️ coloca a imagem 30px acima do h1 */
+  bottom: calc(100% + clamp(10px, 3vw, 30px));
   left: 50%;
   transform: translateX(-50%);
-  width: 120px;
-  height: 120px;
+  width: clamp(60px, 10vw, 120px);
+  height: clamp(60px, 10vw, 120px);
+  min-width: 100px;
   background-image: url("../../img/booking.png");
   background-size: contain;
   background-repeat: no-repeat;
@@ -1432,101 +1418,117 @@ a.active-mobile {
   z-index: 2;
 }
 
-@media (max-width: 1020px) {
-  .duvida {
-    width: 70%;
-    height: 55vh;
-  }
-  .duvida h1 a {
-    font-size: 3.0rem;
-  }
-}
 
-/* === Tablets horizontais e notebooks pequenos === */
-@media (max-width: 900px) {
-  .duvida {
-    width: 70%;
-    height: 50vh;
-  }
-  .duvida h1{
-    margin-top: 10px;
-  }
 
-  .duvida h1 a {
-    font-size: 2.5rem;
-  }
-}
-
-@media (max-width: 840px) {
-  .duvida {
-    width: 80%;
-    height: 50vh;
-  }
-  .duvida h1 a {
-    font-size: 2.5rem;
-  }
-}
-
-/* === Tablets verticais (como 720px) === */
-@media (max-width: 780px) {
-  .duvida {
-    width: 80%;
-    height: 50vh; /* altura visível e proporcional */
-  }
-  .duvida h1 a {
-    font-size: 2.0rem;
-  }
-
-  .duvida h1::before{
-    width: 100px;
-    height: 100px;
-  }
-}
-
-@media (max-width: 700px) {
-  .duvida {
-    width: 50%;
-    height: 40vh;
-  }
-   .duvida h1 {
-     white-space: nowrap;
-  }
-  .duvida h1 a {
-    font-size: 1.0rem;
-
-  }
-}
-
-@media (max-width: 600px) {
-  .duvida {
-    width: 80%;
-    height: 40vh;
-  }
-   .duvida h1 {
-     white-space: nowrap;
-  }
-  .duvida h1 a {
-    font-size: 1.0rem;
-  }
+/* ============================
+   LINK DENTRO DO H1
+============================= */
+.duvida h1 a {
+  letter-spacing: 0.05em;
+  font-size: clamp(1.5rem, 3vw, 3.0rem);
+  text-decoration: none;
+  color: inherit;
+  font-family: "PoiretOne", sans-serif;
+  display: inline-block;
 }
 
 
 
-/* === Smartphones pequenos === */
-@media (max-width: 480px) {
+
+/* ============================
+   QUEBRA DE LINHA CONTROLADA
+============================= */
+.quebra::after {
+  content: "\A";
+  white-space: pre;
+  display: inline;
+}
+
+@media (max-width: 1080px) {
   .duvida {
-    width: 80%;
-    height: 50vh;
+    height: clamp(200px, 55vh, 400px);
   }
   .duvida h1 {
-     white-space: nowrap;
+    top: clamp(20%, 55vh, 65%);
   }
 
-  .duvida h1 a {
-    font-size: 2.0rem;
-  }
- 
+  .duvida h1 a{
+    font-size: clamp(1.5rem, 8vw, 3.0rem);
 }
 
+  .duvida h1::before {
+    width: clamp(100px, 10vw, 200px);
+    height: clamp(100px, 10vw, 200px);
+  }
 
+}
 
+@media (max-width: 780px) {
+  .duvida {
+    height: clamp(200px, 70vh, 350px);
+  }
+  .duvida h1 {
+    top: clamp(20%, 55vh, 65%);
+  }
+
+  .duvida h1 a{
+    font-size: clamp(1.5rem, 8vw, 3.0rem);
+}
+
+  .duvida h1::before {
+    width: clamp(100px, 12vw, 200px);
+    height: clamp(100px, 12vw, 200px);
+  }
+
+}
+
+@media (max-width: 480px) {
+  .duvida {
+    height: clamp(150px, 60vh, 300px);
+  }
+  .duvida h1 {
+    top: clamp(20%, 55vh, 65%);
+  }
+
+  .duvida h1 a{
+    font-size: clamp(1.2rem, 8vw, 2.5rem);
+}
+
+  .duvida h1::before {
+    width: clamp(80px, 12vw, 150px);
+    height: clamp(80px, 12vw, 150px);
+  }
+
+}
+
+@media (max-width: 1080px) {
+  
+  .fundo-principal {
+    height: clamp(200px, 100vh, 650px); /* Altura reduzida para telas pequenas */
+  }
+
+}
+
+@media (max-width: 768px) {
+  
+  .fundo-principal {
+    height: clamp(200px, 100vh, 600px); /* Altura reduzida para telas pequenas */
+  }
+
+}
+
+@media (max-width: 480px) {
+  
+  .fundo-principal {
+    height: clamp(100px, 100vh, 500px); /* Altura reduzida para telas pequenas */
+  }
+
+}
+
+@media (max-width: 480px) {
+  
+  .fundo-principal {
+    height: clamp(100px, 100vh, 500px); /* Altura reduzida para telas pequenas */
+  }
+
+}
