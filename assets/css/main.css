@@ -1361,15 +1361,15 @@ a.active-mobile {
   width: 100%;
   height: clamp(400px, 90vh, 800px); /* aumentei o mínimo de 300px para 400px */
   aspect-ratio: 16 / 9;
-  min-height: 500px;
+  min-height: 600px;
   background-image:
     linear-gradient(to bottom, #ffffff18, rgba(9, 83, 25, 0.178)),
     url('../../img/Adobe Express - file(1).jpg');
   background-size: cover;
-  background-position: center top; /* foca na parte superior da imagem */
+  background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed; /* imagem fixa na tela */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 10px 12px rgba(22, 61, 4, 0.466);
 }
 
 
@@ -1379,14 +1379,17 @@ a.active-mobile {
 .duvida {
   position: relative;
   width: min(90vw, 600px);
-  min-width: 300px; /* ajuste menor */
-  min-height: 300px;
+  min-width: 400px; /* ajuste menor */
+  min-height: 400px;
   height: clamp(250px, 60vh, 600px);
   margin: 0 auto;
   border-radius: 20px;
   background-color: rgba(6, 43, 9, 0.945);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: 0 4px 12px rgba(13, 82, 25, 0.15);
+
 }
 
 .duvida h1 {
@@ -1405,11 +1408,13 @@ a.active-mobile {
 .duvida h1::before {
   content: "";
   position: absolute;
-  bottom: calc(100% + clamp(10px, 3vw, 30px));
-  left: 50%;
+  bottom: calc(100% + clamp(10px, 3vw, 10px));
+  left: 50%;;
   transform: translateX(-50%);
-  width: clamp(60px, 10vw, 120px);
-  height: clamp(60px, 10vw, 120px);
+  width: clamp(20px, 10vw, 120px);
+  min-width: 50px;
+  min-height: 50px;
+  height: clamp(20px, 10vw, 120px);
   min-width: 100px;
   background-image: url("../../img/booking.png");
   background-size: contain;
@@ -1531,4 +1536,92 @@ a.active-mobile {
     height: clamp(100px, 100vh, 500px); /* Altura reduzida para telas pequenas */
   }
 
+}
+
+
+
+.informacao {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 1.5rem;
+  color: #1b5328;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 60px auto;
+  padding: 0 30px;
+  font-family: 'Zalando', sans-serif;
+  max-width: 1150px;
+  width: 100%;
+  min-height: 60px;
+  position: relative;
+  box-sizing: border-box;
+}
+
+/* Barra única à direita (padrão desktop) */
+.informacao::before {
+  content: "";
+  position: absolute;
+  right: 70px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 450px;
+  height: 10px;
+  background: linear-gradient(to bottom, #0b4d06 50%, #d40606 50%);
+  opacity: 0.9;
+  transition: all 0.3s ease;
+}
+
+/* Ajuste leve para telas intermediárias (tablets, até 1020px) */
+@media (max-width: 1020px) {
+  .informacao {
+    font-size: 1.4rem;
+    margin: 50px auto;
+    padding: 0 20px;
+    max-width: 800px;
+  }
+
+  .informacao::before {
+    width: 300px;
+    right: 40px;
+    height: 8px;
+  }
+}
+
+/* Só quebra a barra em telas realmente pequenas (mobile até 768px) */
+@media (max-width: 768px) {
+  .informacao {
+    font-size: 1.3rem;
+    margin: 40px auto;
+    padding: 0 15px;
+    max-width: 90%;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .informacao::before {
+    width: 150px;
+    height: 6px;
+    right: auto;
+    left: 50%;
+    top: auto;
+    bottom: -12px;
+    transform: translateX(-50%);
+    border-radius: 5px;
+  }
+}
+
+/* Telas muito pequenas */
+@media (max-width: 480px) {
+  .informacao {
+    font-size: 1.1rem;
+    margin: 30px auto;
+    padding: 0 10px;
+  }
+
+  .informacao::before {
+    width: 120px;
+    height: 5px;
+    bottom: -10px;
+  }
 }
