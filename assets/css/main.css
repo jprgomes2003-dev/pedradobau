@@ -1378,7 +1378,7 @@ a.active-mobile {
 ============================= */
 .duvida {
   position: relative;
-  width: min(90vw, 600px);
+  width: min(80vw, 600px);
   min-width: 400px; /* ajuste menor */
   min-height: 400px;
   height: clamp(250px, 60vh, 600px);
@@ -1452,6 +1452,7 @@ a.active-mobile {
 @media (max-width: 1080px) {
   .duvida {
     height: clamp(200px, 55vh, 400px);
+    
   }
   .duvida h1 {
     top: clamp(20%, 55vh, 65%);
@@ -1489,7 +1490,29 @@ a.active-mobile {
 
 @media (max-width: 480px) {
   .duvida {
-    height: clamp(150px, 60vh, 300px);
+    height: clamp(100px, 50vh, 300px);
+    min-width: 300px;
+  }
+  .duvida h1 {
+    top: clamp(20%, 55vh, 65%);
+  }
+
+  .duvida h1 a{
+    font-size: clamp(1.2rem, 8vw, 2.5rem);
+}
+
+  .duvida h1::before {
+    width: clamp(80px, 12vw, 150px);
+    height: clamp(80px, 12vw, 150px);
+  }
+
+}
+
+
+@media (max-width: 380px) {
+  .duvida {
+    height: clamp(100px, 50vh, 300px);
+    min-width: clamp(150px, 80vw, 300px);
   }
   .duvida h1 {
     top: clamp(20%, 55vh, 65%);
@@ -1539,89 +1562,566 @@ a.active-mobile {
 }
 
 
-
 .informacao {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  font-size: 1.5rem;
+  font-size: clamp(0.5rem, 2vw + 0.5rem, 1.6rem); /* Texto responsivo */
   color: #1b5328;
   font-weight: bold;
   text-transform: uppercase;
-  margin: 60px auto;
-  padding: 0 30px;
+  margin: clamp(30px, 6vw, 60px) auto; /* Margem fluida */
+  padding: 0 clamp(10px, 3vw, 30px); /* Padding responsivo */
   font-family: 'Zalando', sans-serif;
-  max-width: 1150px;
+  max-width: 1200px;
   width: 100%;
-  min-height: 60px;
+  min-height: clamp(40px, 5vw, 60px);
   position: relative;
   box-sizing: border-box;
+  text-align: left;
 }
 
-/* Barra única à direita (padrão desktop) */
+/* Barra única à direita (desktop e tablets) */
 .informacao::before {
   content: "";
   position: absolute;
-  right: 70px;
+  right: clamp(30px, 5vw, 80px);
   top: 50%;
   transform: translateY(-50%);
-  width: 450px;
-  height: 10px;
+  width: clamp(150px, 30vw, 420px); /* Responsiva conforme largura da tela */
+  height: clamp(5px, 1vw, 10px);
   background: linear-gradient(to bottom, #0b4d06 50%, #d40606 50%);
   opacity: 0.9;
   transition: all 0.3s ease;
 }
 
-/* Ajuste leve para telas intermediárias (tablets, até 1020px) */
+/* Só quebra a barra em telas pequenas (mobile real) */
 @media (max-width: 1020px) {
   .informacao {
-    font-size: 1.4rem;
-    margin: 50px auto;
-    padding: 0 20px;
-    max-width: 800px;
-  }
-
-  .informacao::before {
-    width: 300px;
-    right: 40px;
-    height: 8px;
-  }
-}
-
-/* Só quebra a barra em telas realmente pequenas (mobile até 768px) */
-@media (max-width: 768px) {
-  .informacao {
-    font-size: 1.3rem;
-    margin: 40px auto;
-    padding: 0 15px;
-    max-width: 90%;
-    text-align: center;
     justify-content: center;
+    text-align: center;
   }
 
   .informacao::before {
-    width: 150px;
-    height: 6px;
     right: auto;
     left: 50%;
-    top: auto;
-    bottom: -12px;
+    top: 100%;
+    bottom: -clamp(8px, 1vw, 14px);
     transform: translateX(-50%);
+    width: clamp(200px, 30vw, 400px);
+    height: clamp(4px, 1vw, 12px);
     border-radius: 5px;
   }
 }
 
-/* Telas muito pequenas */
-@media (max-width: 480px) {
+
+@media (max-width: 768px) {
   .informacao {
-    font-size: 1.1rem;
-    margin: 30px auto;
-    padding: 0 10px;
+    justify-content: center;
+    text-align: center;
   }
 
   .informacao::before {
-    width: 120px;
-    height: 5px;
-    bottom: -10px;
+    right: auto;
+    left: 50%;
+    top: 100%;
+    bottom: -clamp(8px, 1vw, 14px);
+    transform: translateX(-50%);
+    width: clamp(100px, 30vw, 200px);
+    height: clamp(4px, 1vw, 12px);
+    border-radius: 5px;
+  }
+}
+
+/*======= texto informativo da pagina informacoes =======*/
+.layout-informacao {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  padding: 60px 5%;
+  max-width: 950px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 20px;
+  background-color: #fff;
+  box-shadow:
+    0 0 10px rgba(38, 119, 56, 0.1),
+    0 0 30px rgba(0, 0, 0, 0.15);
+  margin-top: 5px;
+}
+
+.layout-informacao-segundo {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  padding: 60px 5%;
+  max-width: 950px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 20px;
+  background-color: #fff;
+  box-shadow:
+    0 0 10px rgba(38, 119, 56, 0.1),
+    0 0 30px rgba(0, 0, 0, 0.15);
+  margin-top: 20px;
+}
+
+p a {
+  color: #082d3b;         /* usa a mesma cor do texto do parágrafo */
+  font-weight: normal;    /* garante peso igual ao texto */
+}
+
+p a:hover {
+  color: #ff0e0e; /* sublinha ao passar o mouse */
+}
+
+.container-info {
+  flex: 1 1 100px;
+  max-width: 1000px;
+  margin-bottom: 50px;
+  box-sizing: border-box;
+  text-align: justify;
+}
+
+/* ======= TÍTULO INTERNO ======= */
+.container-info h3 {
+  font-size: clamp(14px, 2vw, 15px);
+  font-family: 'Zalando', sans-serif;
+  color: #125e21;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.container-info h4 {
+  font-size: clamp(14px, 2vw, 16px);
+  font-family: 'Zalando', sans-serif;
+  color: #125e21;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+/* ======= TEXTO ======= */
+.container-info p {
+  font-size: clamp(12px, 1.5vw, 16px);
+  font-family: 'Zalando', sans-serif;
+  text-align: justify;
+  color: #19742c;
+  margin-bottom: 12px;
+  line-height: 1.8;
+}
+
+.container-info p.warning {
+  color: #125e21;
+  font-weight: bold;
+  position: relative;
+  display: flex; /* ícone e texto lado a lado */
+  align-items: center; /* centraliza verticalmente */
+  gap: 10px; /* espaçamento entre ícone e texto */
+  font-size: clamp(13px, 1.5vw, 16px);
+}
+
+/* Ícone à esquerda */
+.container-info p.warning::before {
+  content: "";
+  display: inline-block;
+  background: url('../../img/info\(2\).png') no-repeat center / contain;
+  width: clamp(20px, 3vw, 28px); /* tamanho responsivo */
+  height: clamp(20px, 3vw, 28px);
+}
+
+.destaque {
+  color: #082d3b; /* escolha a cor desejada */
+  font-weight: bold; /* deixa em negrito */
+}
+
+.lista-equipamento {
+  list-style-type: disc; /* mantém o marcador padrão */
+  padding-left: clamp(20px, 5vw, 40px); /* espaçamento lateral responsivo */
+  margin: 0 auto;
+  max-width: 800px; /* limita a largura para telas grandes */
+}
+
+.lista-equipamento li {
+  font-size: clamp(10px, 2vw, 18px); /* tamanho do texto ajustável */
+  font-family: "Zalando", sans-serif;
+  text-align: justify;
+  color: #19742c;
+  margin-bottom: 12px;
+  line-height: 1.8;
+  word-break: break-word; /* evita estouro de palavras longas */
+}
+
+/* Ajustes finos em telas pequenas */
+@media (max-width: 780px) {
+  .lista-equipamento li {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 600px) {
+  .lista-equipamento li {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .lista-equipamento li {
+    text-align: left; /* leitura mais natural no celular */
+    line-height: 1.6;
+    font-size: 13px;
+  }
+}
+
+
+/* opcional: versão suave para telas pequenas */
+@media (max-width: 600px) {
+  .destaque {
+    font-size: 0.95em; /* mantém o equilíbrio do texto */
+  }
+}
+
+
+
+/* Responsivo para telas pequenas */
+@media (max-width: 1020px) {
+  .container-info p.warning {
+    gap: 15px;
+    font-size: clamp(15px, 1.9vw, 17px);
+  }
+
+  .container-info p.warning::before {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 610px) {
+  .container-info p.warning {
+    gap: 8px;
+    font-size: clamp(13px, 1.9vw, 17px);
+  }
+
+  .container-info p.warning::before {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 500px) {
+  .container-info p.warning {
+    gap: 8px;
+    font-size: clamp(12px, 1.8vw, 15px);
+    
+  }
+
+  .container-info p.warning::before {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 400px) {
+  .container-info p.warning {
+    gap: 8px;
+    font-size: clamp(11px, 1.9vw, 14px);
+    
+  }
+
+  .container-info p.warning::before {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media (max-width: 350px) {
+  .container-info p.warning {
+    gap: 8px;
+    font-size: clamp(9px, 1.9vw, 12px);
+    
+  }
+
+  .container-info p.warning::before {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+
+/* ======= RESPONSIVIDADE ======= */
+@media (max-width: 1020px) {
+  .layout-informacao {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 40px;
+    max-width: 80%;
+  }
+
+  .container-info h3 {
+    font-size: 1.1rem;
+  }
+
+  .container-info p {
+    font-size: 0.95rem;
+  }
+
+  
+}
+
+
+@media (max-width: 880px) {
+  .layout-informacao {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 40px;
+    max-width: 70%;
+  }
+
+  .container-info h3 {
+    font-size: 1.1rem;
+  }
+
+  .container-info p {
+    font-size: 0.95rem;
+  }
+
+  
+}
+
+
+@media (max-width: 780px) {
+  .layout-informacao {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 40px;
+    max-width: 75%;
+  }
+
+  .container-info h3 {
+    font-size: 1.0rem;
+  }
+
+  .container-info p {
+    font-size: 1.0rem;
+  }
+
+ 
+}
+
+@media (max-width: 610px) {
+  .layout-informacao {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 40px;
+    max-width: 75%;
+  }
+
+  .container-info h3 {
+    font-size: 0.9rem;
+  }
+
+  .container-info p {
+    font-size: 0.9rem;
+  }
+
+ 
+}
+
+@media (max-width: 500px) {
+  .layout-informacao {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 40px;
+    max-width: 75%;
+  }
+
+  .container-info h3 {
+    font-size: 0.8rem;
+  }
+
+  .container-info p {
+    font-size: 0.8rem;
+  }
+
+ 
+}
+
+
+@media (max-width: 480px) {
+  .layout-informacao {
+    padding: 20px;
+    gap: 10px;
+    max-width: 75%;
+  }
+
+  .container-info h3 {
+    font-size: 0.80rem;
+  }
+
+  .container-info p {
+    font-size: 0.80rem;
+    line-height: 1.6;
+  }
+}
+
+@media (max-width: 350px) {
+  .layout-informacao {
+    padding: 20px;
+    gap: 10px;
+    max-width: 75%;
+  }
+
+  .container-info h3 {
+    font-size: 0.60rem;
+  }
+
+  .container-info p {
+    font-size: 0.60rem;
+    line-height: 1.6;
+  }
+}
+
+/* opcional: versão suave para telas pequenas */
+@media (max-width: 600px) {
+  .destaque {
+    font-size: 0.95em; /* mantém o equilíbrio do texto */
+  }
+}
+
+
+
+
+
+/* ======= RESPONSIVIDADE do segundo layout pagina informações ======= */
+@media (max-width: 1020px) {
+  .layout-informacao-segundo {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 40px;
+    max-width: 80%;
+  }
+
+ 
+
+  
+}
+
+
+@media (max-width: 880px) {
+  .layout-informacao-segundo {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 40px;
+    max-width: 70%;
+  }
+
+
+
+  
+}
+
+
+@media (max-width: 780px) {
+  .layout-informacao-segundo {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 40px;
+    max-width: 70%;
+  }
+
+
+
+ 
+}
+
+@media (max-width: 480px) {
+  .layout-informacao-segundo {
+    padding: 20px;
+    gap: 10px;
+    max-width: 75%;
+  }
+
+
+}
+
+.informacao-ultimo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: clamp(0.5rem, 2vw + 0.5rem, 1.6rem); /* Texto responsivo */
+  color: #1b5328;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: clamp(30px, 6vw, 60px) auto; /* Margem fluida */
+  padding: 0 clamp(10px, 3vw, 30px); /* Padding responsivo */
+  font-family: 'Zalando', sans-serif;
+  max-width: 1200px;
+  width: 100%;
+  min-height: clamp(40px, 5vw, 60px);
+  position: relative;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+/* Barra única à direita (desktop e tablets) */
+.informacao-ultimo::before {
+  content: "";
+  position: absolute;
+  right: clamp(30px, 5vw, 80px);
+  top: 50%;
+  transform: translateY(-50%);
+  width: clamp(200px, 40vw, 480px); /* Responsiva conforme largura da tela */
+  height: clamp(5px, 1vw, 10px);
+  background: linear-gradient(to bottom, #0b4d06 50%, #d40606 50%);
+  opacity: 0.9;
+  transition: all 0.3s ease;
+}
+
+/* Só quebra a barra em telas pequenas (mobile real) */
+@media (max-width: 1020px) {
+  .informacao-ultimo {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .informacao-ultimo::before {
+    right: auto;
+    left: 50%;
+    top: 100%;
+    bottom: -clamp(8px, 1vw, 14px);
+    transform: translateX(-50%);
+    width: clamp(200px, 30vw, 400px);
+    height: clamp(4px, 1vw, 12px);
+    border-radius: 5px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .informacao-ultimo {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .informacao-ultimo::before {
+    right: auto;
+    left: 50%;
+    top: 100%;
+    bottom: -clamp(8px, 1vw, 14px);
+    transform: translateX(-50%);
+    width: clamp(100px, 30vw, 200px);
+    height: clamp(4px, 1vw, 12px);
+    border-radius: 5px;
   }
 }
