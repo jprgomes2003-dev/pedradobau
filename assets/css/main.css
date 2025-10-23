@@ -1588,7 +1588,7 @@ a.active-mobile {
   right: clamp(30px, 5vw, 80px);
   top: 50%;
   transform: translateY(-50%);
-  width: clamp(150px, 30vw, 420px); /* Responsiva conforme largura da tela */
+  width: clamp(150px, 30vw, 400px); /* Responsiva conforme largura da tela */
   height: clamp(5px, 1vw, 10px);
   background: linear-gradient(to bottom, #0b4d06 50%, #d40606 50%);
   opacity: 0.9;
@@ -2081,7 +2081,7 @@ p a:hover {
   right: clamp(30px, 5vw, 80px);
   top: 50%;
   transform: translateY(-50%);
-  width: clamp(200px, 40vw, 480px); /* Responsiva conforme largura da tela */
+  width: clamp(200px, 40vw, 400px); /* Responsiva conforme largura da tela */
   height: clamp(5px, 1vw, 10px);
   background: linear-gradient(to bottom, #0b4d06 50%, #d40606 50%);
   opacity: 0.9;
