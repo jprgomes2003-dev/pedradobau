@@ -3,28 +3,31 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="utf-8">
-  <title>Agendamentos | Pedra do Baú</title>
+  <title>Bauzinho | Pedra do Baú</title>
   <link rel="stylesheet" href="assets/css/main.css">
   <link rel="shortcut icon" href="ico/Brasão_SBS.ico" type="image/x-icon">
 </head>
 <body>
-  <header>
-    <nav>
-      <img src="img/logotipo-prefeitura-sbs.png" alt="Logo" class="logo">
+ <header class="header-sem">
+  <nav>
+    <img src="img/logotipo-prefeitura-sbs.png" alt="Logo" class="logo">
 
-      <!-- Ícone hamburguer -->
-      <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    <!-- Ícone hambúrguer para mobile -->
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
 
-      <!-- Menu desktop -->
-     <ul class="menu" id="menu">
-      <li><a href="/index.html" class="active">INÍCIO</a></li>
-      <li><a href="/inform.html" >INFORMAÇÕES</a></li>
-      <li><a href="#" >AGENDAMENTOS</a></li>
-      <li><a href="/bauzinho.html" >BAUZINHO</a></li>
-      <li><a href="#" >CONTATOS</a></li>
+    <!-- Menu desktop / mobile -->
+    <ul class="menu-bau" id="menu-bau">
+      <li><a href="/index.html">INÍCIO</a></li>
+      <li><a href="/inform.html">INFORMAÇÕES</a></li>
+      <li><a href="#">AGENDAMENTOS</a></li>
+      <li><a href="/bauzinho.html" class="active">BAUZINHO</a></li>
+      <li><a href="#">CONTATOS</a></li>
     </ul>
-    </nav>
-  </header>
+  </nav>
+</header>
+
+
+
 
   <!-- ===== MENU MOBILE LATERAL ===== -->
 <nav class="mobile">
@@ -33,13 +36,12 @@
     <button class="fechar-menu" aria-label="Fechar menu">&times;</button>
   </div>
   <ul class="menu-mob" id="menu-mob">
-    <li><a href="/index.html" class="active-mobile">INÍCIO</a></li>
-    <li><a href="/inform.html" >INFORMAÇÕES</a></li>
-    <li><a href="#" >AGENDAMENTOS</a></li>
-    <li><a href="/bauzinho.html" >BAUZINHO</a></li>
-    <li><a href="#" >CONTATOS</a></li>
+    <li><a href="/index.html">INÍCIO</a></li>
+    <li><a href="/inform.html">INFORMAÇÕES</a></li>
+    <li><a href="#">AGENDAMENTOS</a></li>
+    <li><a href="/bauzinho.html" class="active-mobile">BAUZINHO</a></li>
+    <li><a href="#">CONTATOS</a></li>
   </ul>
-
   <div class="social-mobile">
   <a href="https://www.instagram.com/meioambientesbs" target="_blank" aria-label="Instagram">
     <img src="ico/instagram(2).png" alt="Instagram">
@@ -53,56 +55,27 @@
 <!-- Fundo escuro -->
 <div id="mobile-overlay"></div>
 
+<!-- Conteúdo da Página -->
 
-  <!-- Fundo verde entre header e bem-vindo -->
-  <div class="section-banner">
-    <div class="apresent">
-      <h1>
-        <a href="https://saobentotur.com.br/mona-pedra-do-bau/">
-          Momento Natural  <span class="quebra"></span>da Pedra do Baú
-        </a>
-      </h1>
+<section class="fundo-principal-pedra">
+ <div class="duvida-pedra">
+     
     </div>
-  </div>
-
-
-  <div class="logo-section">
-    <h2 class="logo-section-title">
-  <span class="icon"></span>
-  Bem-vindo a São Bento do Sapucaí
-  
-</h2>
-  </div>
- 
-
-  <h2 class="titulo">
-    Comunicado
-  </h2>
-
-  <div class="layout">
-  <div class="container">
-    <h3>AVISO IMPORTANTE SOBRE AGENDAMENTOS</h3>
-    <p>Lembramos que o prazo limite para realizar seu agendamento é até às 18:00 horas do dia anterior à data desejada.</p>
-    <p class="warning">⚠️ Atenção: Agendamentos com dados incompletos serão automaticamente excluídos.</p>
-    <p>
-      Garanta que todas as informações sejam preenchidas corretamente e dentro do prazo para evitar contratempos.
-      <br>Agradecemos sua compreensão!
-    </p>
-  </div>
-
-  <div class="image-box">
-    <img src="img/aviso-mona.png" alt="Agendamento">
-  </div>
-</div>
-
-  <div class="btn-agendamento-wrapper">
-  <a href="#" class="btn-agendamento"><span class="agenda"></span>REALIZAR  AGENDAMENTO 
-  </a>
-</div>
-
   
 
-  <footer class="footer">
+</section>
+
+
+
+
+
+
+
+
+
+<script src="/assets/JavaScript/menu.js"></script>
+
+   <footer class="footer">
   <div class="footer-top"></div>
 
   <div class="footer-content">
@@ -138,8 +111,6 @@
     </div>
   </div>
 </footer>
-
-<script src="/assets/JavaScript/menu.js"></script>
 
 </body>
 </html>
