@@ -2386,22 +2386,76 @@ body.menu-open {
   }
 }
 
-
+/*barra de aviso bauzinho*/
 .fundo-principal-pedra {
   position: relative;
+  margin-top: 0;
   padding-top: 100px;
   width: 100%;
-  height: clamp(400px, 80vh, 800px); /* aumentei o mínimo de 300px para 400px */
+  height: clamp(500px, 80vh, 800px);
   aspect-ratio: 16 / 9;
-  min-height: 600px;
+  min-height: 100px;
   background-image:
-     linear-gradient(to bottom, rgb(255, 255, 255), rgba(235, 235, 235, 0)),
-     linear-gradient(to bottom, rgba(175, 174, 174, 0.589), rgba(12, 73, 7, 0.479)),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.76) 10%, rgba(255, 255, 255, 0.226) 8%, rgba(255,255,255,0) 10%),
+    linear-gradient(to right, rgba(8, 63, 15, 0.295), rgb(14, 43, 5)),
     url('../../img/Bauzinho-Por-do-Sol-CUME-ALTA.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   box-shadow: 0 -20px 40px rgba(255,255,255,0.6);
+}
+
+/* === TEXTO CENTRALIZADO SOBRE O GRADIENTE === */
+.aviso-bauzinho {
+  position: absolute;
+  top: 0; /* mantém o texto sobre o gradiente */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  text-align: center;
+  font-family: Zalando;
+  color: #073f14;
+  font-weight: bold;
+  font-size: clamp(1.0rem, 5vw, 1.0rem); /* responsivo — ajusta conforme o tamanho da tela */
+  padding: clamp(10px, 2vw, 25px) clamp(5px, 3vw, 20px); /* padding também ajustável */
+  background: transparent; /* mantém visível sobre o gradiente */
+  line-height: 1.3; /* melhora a leitura em telas menores */
+  z-index: 10; /* garante que fique acima da imagem */
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.4); /* leve destaque sobre o gradiente */
+}
+
+@media (max-width: 1020px) {
+  .aviso-bauzinho {
+    font-size: clamp(0.9rem, 4.5vw, 1.0rem); /* ajuste para telas muito pequenas */
+    padding: clamp(20px, 6vw, 40x);
+
+  }
+}
+
+@media (max-width: 780px) {
+  .aviso-bauzinho {
+    font-size: clamp(0.5rem, 4vw, 0.95rem); /* ajuste para telas muito pequenas */
+    padding: clamp(20px, 6vw, 40x);
+
+  }
+}
+
+@media (max-width: 480px) {
+  .aviso-bauzinho {
+    font-size: clamp(0.5rem, 3.5vw, 0.95rem); /* ajuste para telas muito pequenas */
+    padding: clamp(20px, 6vw, 40x);
+
+  }
+}
+
+@media (max-width: 400px) {
+  .aviso-bauzinho {
+    font-size: clamp(0.7rem, 4vw, 0.8rem); /* ajuste para telas muito pequenas */
+    padding: clamp(10px, 3vw, 30px);
+   
+    
+  }
+
 
 }
 
@@ -2414,7 +2468,7 @@ body.menu-open {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 220px;
+  height: 300px;
   background:
     linear-gradient(to top, #ffffff 0%, rgba(255,255,255,0) 20%),
     url("data:image/svg+xml;utf8,<svg viewBox='0 0 1440 320' xmlns='http://www.w3.org/2000/svg'><path fill='%23ffffff' fill-opacity='1' d='M0,288 C360,160 1080,320 1440,200 L1440,320 L0,320 Z'></path></svg>");
@@ -2426,7 +2480,7 @@ body.menu-open {
 }
 
 
-/*
+
 .duvida-pedra {
   position: relative;
   width: min(80vw, 600px);
@@ -2434,8 +2488,6 @@ body.menu-open {
   min-height: 400px;
   height: clamp(250px, 60vh, 600px);
   margin: 0 auto;
-  border-radius: 20px;
-  background-color: rgba(6, 43, 9, 0.945);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -2445,61 +2497,66 @@ body.menu-open {
 
 .duvida-pedra h1 {
   position: absolute;
-  top: 65%; 
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 40%;
+  right: -30%; /* move o texto para o lado direito */
+  transform: translateY(-50%); /* mantém o alinhamento vertical */
   margin: 0;
-  text-align: center;
-  line-height: 1.2;
-  color: #e7fdb4e5;
+  text-align:justify; /* justifica o texto */
+  line-height: 1.3;
+  color: #f5f4f4;
   z-index: 3;
-  white-space: nowrap; 
+  white-space: normal; /* permite quebra de linha natural */
+  max-width: 500px; /* evita que o texto ocupe toda a largura */
 }
 
-.duvida-pedra h1::before {
-  content: "";
-  position: absolute;
-  bottom: calc(100% + clamp(10px, 3vw, 10px));
-  left: 50%;;
-  transform: translateX(-50%);
-  width: clamp(20px, 10vw, 120px);
-  min-width: 50px;
-  min-height: 50px;
-  height: clamp(20px, 10vw, 120px);
-  min-width: 100px;
-  background-image: url("../../img/booking.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  z-index: 2;
+
+.titulo-bauzinho {
+  font-size: 5rem; /* aumenta o tamanho */
+  font-weight: bold; /* deixa em negrito, se quiser */
+  letter-spacing: 1px; /* espaço entre letras opcional */
+  color: #edffad; /* garante contraste */
 }
-*/
+
 
 
 /* ============================
    LINK DENTRO DO H1
 ============================= */
-/*
+
 .duvida-pedra h1 a {
   letter-spacing: 0.05em;
-  font-size: clamp(1.5rem, 3vw, 3.0rem);
+  font-size: clamp(1.5rem, 3vw, 2.0rem);
   text-decoration: none;
   color: inherit;
-  font-family: "PoiretOne", sans-serif;
+  font-family: "Zalando", sans-serif;
   display: inline-block;
 }
-*/
+
 
 
 
 /* ============================
    QUEBRA DE LINHA CONTROLADA
 ============================= */
-/*
+
 .quebra::after {
   content: "\A";
   white-space: pre;
   display: inline;
 }
 
-*/
+.mesma-linha {
+  white-space: nowrap;
+}
+
+
+.menu-bau li a.active::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background-color: #0d6b21; /* verde escuro */
+  bottom: -5px;
+  left: 0;
+}
+
