@@ -867,6 +867,7 @@ main {
 .container p.warning {
   color: #125e21;
   font-weight: bold;
+  text-align: justify;
 }
 
 /* ======= RESPONSIVIDADE ======= */
@@ -2862,7 +2863,7 @@ p a:hover {
 @media (max-width: 1024px) {
   .agendamento {
     width: min(70vw, 550px);
-    padding-top: 90px;
+    padding-top: 50px;
     height: 500px;
   }
 
@@ -2881,11 +2882,12 @@ p a:hover {
 @media (max-width: 768px) {
   .agendamento {
     width: min(85vw, 500px);
-    padding-top: 90px;
+    padding-top: 50px;
   }
 
   .agendamento h1 {
     font-size: clamp(1.4rem, 5vw, 1.8rem);
+    
   }
 
   .agendamento h1::before {
@@ -2941,7 +2943,7 @@ p a:hover {
   .agendamento {
     width: min(90vw, 400px);
     height: 350px;
-    padding-top: 70px;
+    padding-top: 50px;
   }
 
   .agendamento h1 {
@@ -2975,3 +2977,364 @@ p a:hover {
 }
 
 /* Opcional: microajustes apenas em telas muito estreitas */
+/*Página De calendário*/
+/* layout */
+.agendamento-bau {
+  max-width: clamp(320px, 90vw, 480px);
+  margin: 28px auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+  font-family: "Zalando", sans-serif;
+}
+
+/* ===== ESTILO B1 — LUXO SUAVE SERRA ===== */
+.cal-wrap {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 14px;
+  border: 1px solid #e9e1c4;
+  box-shadow: 0 14px 20px rgba(11, 59, 21, 0.644);
+}
+
+/* Cabeçalho */
+.cal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  background-color: rgb(221, 220, 220);
+  padding: 10px 14px;
+  border-radius: 10px;
+ 
+}
+
+#monthLabel {
+  font-size: 1.2rem;   /* tamanho padrão (pequeno) */
+  font-weight: 600;
+  color: #073f14;
+}
+
+/* Ajuste responsivo */
+@media (max-width: 600px) {
+  #monthLabel {
+    font-size: 0.92rem; /* menor ainda no celular */
+  }
+}
+
+/* ===== RESPONSIVO: abaixo de 480px ===== */
+@media (max-width: 480px) {
+  .cal-header {
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px;
+    text-align: center;
+  }
+
+  /* Mantém os ícones junto do nome do mês */
+  .month-nav {
+    width: 100%;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  #monthLabel {
+    font-size: 0.9rem; /* diminui o tamanho do título */
+    font-weight: 600;
+  }
+
+  /* Botão “Hoje” fica embaixo e centralizado */
+  .today-btn {
+    width: 100%;
+    max-width: 140px;
+    text-align: center;
+    margin-top: 15px;
+  }
+}
+
+
+
+.month-nav button,
+#prevMonthBtn,
+#nextMonthBtn {
+  background: transparent !important;
+  border: none !important;
+  outline: none;
+  box-shadow: none;
+  font-size: 22px;
+  font-weight: 600;
+  color: #2f5132; /* cor do ícone */
+  cursor: pointer;
+  padding: 0 4px;
+  transition: 0.2s;
+}
+
+.month-nav button:hover,
+#prevMonthBtn:hover,
+#nextMonthBtn:hover {
+  transform: scale(1.25);
+  color: #3c6a41; /* cor no hover */
+}
+
+
+.month-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.month-nav button {
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #2f5132;
+  transition: 0.2s;
+  font-weight: 600;
+}
+
+.month-nav button:hover {
+  transform: scale(1.18);
+  color: #3f6a43;
+}
+
+.monthLabel {
+  font-weight: 600;
+  font-size: 1.06rem;
+  color: #1c3f21;
+  text-transform: capitalize;
+}
+
+.today-btn {
+  background: #2f5132;
+  color: #fff;
+  border: none;
+  font-family: "Zalando", sans-serif;
+  padding: 7px 14px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: 0.2s;
+  font-weight: 500;
+}
+
+.today-btn:hover {
+  background: #3c6a41;
+}
+
+/* Calendário */
+.calendar {
+  display:grid;
+  grid-template-columns: repeat(7,1fr);
+  gap:8px;
+}
+
+.calendar .weekday {
+  text-align:center;
+  font-weight:700;
+  font-size:0.8rem;
+  color:#5f5f5f;
+  padding:6px 0;
+  border-bottom: 1px solid #e7e0c2;
+}
+
+.day {
+  height:64px;
+  display:flex;
+  font-family: "Zalando", sans-serif;
+  font-weight: bold;
+  align-items:center;
+  justify-content:center;
+  color: #01310cc7;
+  background:#fafafa;
+  border-radius:8px;
+  cursor:pointer;
+  border: 1px solid #b8ac7d;
+  transition: 0.2s;
+}
+
+.day:hover:not(.disabled) {
+  background: #f2efde;
+}
+
+.day.disabled { 
+  background:#f1f1f1; 
+  opacity:.55; 
+  cursor:not-allowed; 
+}
+
+.day.today { 
+  box-shadow: inset 0 0 0 2px rgba(46,84,55,0.25);
+  background:#f7f5ea;
+}
+
+.day.selected { 
+  background-color: #01310c;
+  color:#fff; 
+  border:none;
+}
+
+/* Painel Lateral (popover) */
+.day-panel {
+  position: fixed;
+  right: 18px;
+  top: 100px;
+  width: 340px;
+  max-height: 70vh;
+  background: #ffffff;
+  border: 2px solid #e0d5a6;
+  border-left: 6px solid #cbbb7a;
+  box-shadow: 0 14px 46px rgba(0,0,0,0.14);
+  padding: 14px;
+  border-radius: 8px;
+  overflow:auto;
+  z-index: 22000;
+  display:none;
+}
+.day-panel[aria-hidden="false"] { display:block; }
+
+.close-panel { 
+  position:absolute; 
+  top:8px; 
+  right:10px; 
+  background:transparent; 
+  border:none; 
+  font-size:18px; 
+  cursor:pointer; 
+  color:#444; 
+}
+
+.panel-date { 
+  color:#b89b36; 
+  font-weight:700; 
+  margin-bottom:10px; 
+  font-size:1rem;
+}
+
+/* Itens dentro do painel */
+.panel-list .entry {
+  padding: 12px 6px;
+  border-bottom:1px solid rgba(0,0,0,0.08);
+}
+.entry .line1 { 
+  font-weight:600; 
+  font-size:0.98rem; 
+  color:#2f5132; 
+  margin-bottom:6px; 
+}
+.entry .desc { 
+  font-size:0.9rem; 
+  color:#333; 
+  margin-bottom:8px; 
+}
+.entry .btn-agenda {
+  display:inline-block;
+  padding:8px 12px;
+  background:#2f5132;
+  font-family: "Zalando", sans-serif;
+  color:#fff;
+  border-radius:6px;
+  border:none;
+  cursor:pointer;
+  transition:0.2s;
+}
+
+.entry .btn-agenda:hover {
+  background:#3c6a41;
+}
+
+.entry.no-sched .desc { 
+  color:#555; 
+  font-style:italic; 
+}
+
+/* Modal Form */
+.modal {
+  position: fixed;
+  inset:0;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:23000;
+  background: rgba(0,0,0,0.45);
+}
+.modal[aria-hidden="false"] { display:flex; }
+
+.modal-card {
+  max-width: 520px;
+  width: 96%;
+  background:#ffffff;
+  padding:18px;
+  border-radius:10px;
+  border: 1px solid #e9e1c4;
+  box-shadow: 0 18px 44px rgba(0,0,0,0.18);
+  position:relative;
+}
+
+.close-modal { 
+  position:absolute; 
+  right:12px; 
+  top:12px; 
+  border:none; 
+  background:transparent; 
+  font-size:20px; 
+  cursor:pointer; 
+  color:#333; 
+}
+
+
+
+/* Form */
+.modal-card form { 
+  display:flex; 
+  flex-direction:column; 
+  gap:10px; 
+}
+.modal-card label { 
+  font-size:0.85rem; 
+  color:#222; 
+}
+.modal-card input, 
+.modal-card textarea { 
+  padding:11px; 
+  border-radius:8px; 
+  border:1px solid #dcd3b2; 
+  font-size:0.95rem; 
+  width:100%; 
+  box-sizing:border-box; 
+}
+#sendBtn { 
+  padding:10px; 
+  font-family: "Zalando", sans-serif;
+  background:#2f5132; 
+  color:#fff; 
+  border:none; 
+  border-radius:8px; 
+  cursor:pointer; 
+  transition:0.2s;
+}
+
+#sendBtn:hover {
+  background:#3c6a41;
+}
+
+/* Responsive */
+@media (max-width: 880px) {
+  .day-panel { 
+    right:8px; 
+    left:8px; 
+    top:80px; 
+    width:auto; 
+    max-height:60vh; 
+  }
+}
+
+@media (max-width: 360px) {
+  .day-panel { 
+    right:8px; 
+    left:8px; 
+    top:80px; 
+    width:auto; 
+    max-height:60vh; 
+  }
+}
