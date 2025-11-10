@@ -228,29 +228,20 @@ function toggleMenu() {
 
 
   /* ================== FORMULÁRIO ================== */
-  const modal = document.getElementById('modalForm');
-  const closeModal = document.getElementById('closeModal');
-  const f_date_time = document.getElementById('f_date_time');
-  const f_activity = document.getElementById('f_activity');
-
   function openForm(date, time, activity) {
-    const dateStr = date.toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' });
-    f_date_time.value = `${dateStr}, ${time}`;
-    f_activity.value = activity;
-    modal.setAttribute('aria-hidden','false');
-  }
+  const dataStr = date.toLocaleDateString('pt-BR', { day: "2-digit", month: "2-digit", year: "numeric" });
 
-  closeModal.addEventListener('click', () => modal.setAttribute('aria-hidden','true'));
-
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) modal.setAttribute('aria-hidden','true');
+  // Cria os parâmetros da URL
+  const params = new URLSearchParams({
+    atividade: activity,
+    data: dataStr,
+    hora: time
   });
 
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      if (modal.getAttribute('aria-hidden') === 'false') modal.setAttribute('aria-hidden','true');
-      if (dayPanel.getAttribute('aria-hidden') === 'false') dayPanel.setAttribute('aria-hidden','true');
-    }
-  });
+  // Redireciona para o formulário externo
+  window.location.href = `formulario.html?${params.toString()}`;
+}
+
+
 
 })();

@@ -3106,7 +3106,7 @@ p a:hover {
 }
 
 .today-btn {
-  background: #2f5132;
+  background: #06360a;
   color: #fff;
   border: none;
   font-family: "Zalando", sans-serif;
@@ -3145,7 +3145,7 @@ p a:hover {
   font-weight: bold;
   align-items:center;
   justify-content:center;
-  color: #01310cc7;
+  color: #01310c;
   background:#fafafa;
   border-radius:8px;
   cursor:pointer;
@@ -3154,22 +3154,21 @@ p a:hover {
 }
 
 .day:hover:not(.disabled) {
-  background: #f2efde;
+  background: #032503;
 }
 
 .day.disabled { 
   background:#f1f1f1; 
-  opacity:.55; 
   cursor:not-allowed; 
 }
 
 .day.today { 
   box-shadow: inset 0 0 0 2px rgba(46,84,55,0.25);
-  background:#f7f5ea;
+  background:#ccc6ab;
 }
 
 .day.selected { 
-  background-color: #01310c;
+  background-color: #05310f;
   color:#fff; 
   border:none;
 }
@@ -3201,7 +3200,7 @@ p a:hover {
   border:none; 
   font-size:18px; 
   cursor:pointer; 
-  color:#444; 
+  color: #164220; 
 }
 
 .panel-date { 
@@ -3230,7 +3229,7 @@ p a:hover {
 .entry .btn-agenda {
   display:inline-block;
   padding:8px 12px;
-  background:#2f5132;
+  background:#073f0c;
   font-family: "Zalando", sans-serif;
   color:#fff;
   border-radius:6px;
@@ -3279,62 +3278,7 @@ p a:hover {
   background:transparent; 
   font-size:20px; 
   cursor:pointer; 
-  color:#333; 
+  color: #164220; 
 }
 
 
-
-/* Form */
-.modal-card form { 
-  display:flex; 
-  flex-direction:column; 
-  gap:10px; 
-}
-.modal-card label { 
-  font-size:0.85rem; 
-  color:#222; 
-}
-.modal-card input, 
-.modal-card textarea { 
-  padding:11px; 
-  border-radius:8px; 
-  border:1px solid #dcd3b2; 
-  font-size:0.95rem; 
-  width:100%; 
-  box-sizing:border-box; 
-}
-#sendBtn { 
-  padding:10px; 
-  font-family: "Zalando", sans-serif;
-  background:#2f5132; 
-  color:#fff; 
-  border:none; 
-  border-radius:8px; 
-  cursor:pointer; 
-  transition:0.2s;
-}
-
-#sendBtn:hover {
-  background:#3c6a41;
-}
-
-/* Responsive */
-@media (max-width: 880px) {
-  .day-panel { 
-    right:8px; 
-    left:8px; 
-    top:80px; 
-    width:auto; 
-    max-height:60vh; 
-  }
-}
-
-@media (max-width: 360px) {
-  .day-panel { 
-    right:8px; 
-    left:8px; 
-    top:80px; 
-    width:auto; 
-    max-height:60vh; 
-  }
-}

@@ -1,0 +1,126 @@
+   :root {
+      --primary: #1a5829;      /* Verde água institucional */
+      --primary-dark: #8ba789;
+      --bg: #0e3f0e;
+      --text: #12410ed0;
+      --border: #d0d3d0;
+      --radius: 10px;
+    }
+
+     .form-container {
+      width: min(500px, 90%);
+      background: #fff;
+      margin: 40px auto;
+      padding: 28px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 18px rgba(3, 53, 14, 0.527);
+      animation: fadeIn .3s ease-out;
+    }
+
+
+.form-logo {
+  width: 90%;      /* ajuste o tamanho aqui */
+  margin: 0 auto 15px auto;
+  display: block;
+  margin-bottom: 15px;
+}
+
+
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(10px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    h2 {
+      font-family: poppins, sans-serif;
+      font-size: clamp(1.0rem, 4vw, 1.4rem);
+      margin-bottom: 40px;
+      font-weight: 600;
+      color: #174d25;
+      text-align: center;
+    }
+
+    .form-container h2::after {
+    content: "";
+    width: 130px;         /* tamanho da barra */
+    height: 4px;         /* espessura da barra */
+    background: #587a2b; /* cor verde — pode ajustar */
+    display: block;
+    margin: 8px auto 0 auto;
+    border-radius: 4px;
+    }
+
+    label {
+      font-family: poppins, sans-serif;  
+      display: block;
+      margin: 12px 0 5px;
+      font-size: .92rem;
+      font-weight: bold;
+      color: #174d25;;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: var(--radius);
+      border: 2px solid var(--border);
+      font-size: .95rem;
+      font-family: Inter, sans-serif;
+      outline: none;
+      color: var(--text);
+      background: #fff;
+      transition: .2s;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(44,140,122,.18);
+    }
+
+    .extra-group {
+      background: #bfd4c4ce;
+      border: 1px solid var(--border);
+      padding: 12px;
+      border-radius: var(--radius);
+      margin-top: 12px;
+    }
+
+    button[type="submit"] {
+      width: 100%;
+      background: var(--primary);
+      padding: 12px;
+      color: #fff;
+      border: none;
+      margin-top: 20px;
+      border-radius: var(--radius);
+      font-size: 1rem;
+      font-family: poppins, sans-serif;
+      font-weight: 500;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    button[type="submit"]:hover {
+      background: var(--primary-dark);
+      color: white;
+    }
+
+.error-message {
+  background: #ffe6e6;
+  color: #b80000;
+  border: 1px solid #b80000;
+  padding: 10px 14px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  text-justify: justify;
+  font-family: "Zalando Sans", sans-serif;
+  display: none;
+  align-items: center;
+  gap: 8px;
+}
+
+

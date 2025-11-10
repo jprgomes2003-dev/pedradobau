@@ -77,40 +77,7 @@
   </div>
 </section>
 
-<!-- Modal do formulário (envia para FormSubmit) -->
-<div id="modalForm" class="modal" aria-hidden="true">
-  <div class="modal-card">
-    <button id="closeModal" class="close-modal" aria-label="Fechar">✕</button>
-    <h3>Solicitar agendamento</h3>
 
-    <!-- <form> action: substitua SEU_EMAIL@DOMINIO -->
-    <form id="bookingForm" action="https://formsubmit.co/SEU_EMAIL@DOMINIO" method="POST" target="_blank">
-      <!-- campos ocultos para FormSubmit -->
-      <input type="hidden" name="_subject" value="Novo agendamento - Bauzinho">
-      <input type="hidden" name="_captcha" value="false">
-      <!-- campos preenchidos automaticamente -->
-      <label>Data / Hora</label>
-      <input id="f_date_time" name="DataHorario" type="text" readonly required>
-
-      <label>Atividade</label>
-      <input id="f_activity" name="Atividade" type="text" readonly required>
-
-      <label>Nome</label>
-      <input id="f_name" name="Nome" type="text" required>
-
-      <label>E-mail</label>
-      <input id="f_email" name="Email" type="email" required>
-
-      <label>Telefone</label>
-      <input id="f_phone" name="Telefone" type="tel" required>
-
-      <label>Mensagem (opcional)</label>
-      <textarea id="f_msg" name="Mensagem" rows="4"></textarea>
-
-      <button id="sendBtn" type="submit">Enviar solicitação</button>
-    </form>
-  </div>
-</div>
 
 
 <script src="/assets/JavaScript/menu.js"></script>
